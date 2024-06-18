@@ -1,0 +1,41 @@
+They will give K , K can be more than length of LL so what we will do : we use (K % Length of LL)
+
+1st write insert node function
+
+THEN CALCULATE THE LENGTH OF LL BY USING temp.next = Null now temp is at last element so connect it with 1st element
+AND CONNECTING ADDRESS TO NULL FOR LAST ELEMENT
+
+# utility function to insert node at the end of the linked list
+def insertNode(head, val):
+    newNode = Node(val)
+    if head == None:
+        head = newNode
+        return head
+    temp = head
+    while temp.next != None:
+        temp = temp.next
+    temp.next = newNode
+    return head
+
+def RotateLL(head,k):
+if head == None or head.next == None or k=0 :
+return head
+# calc length
+temp = head
+length =1
+# loop starts
+while temp.next!=None:
+length+ = 1
+temp = temp.next
+#Link last node to first node
+temp.next = head
+k = k % length
+end = length - k
+while end:
+   temp = temp.next
+   end-=1
+#breaking last node link and pointing to NULL
+head = temp.next
+temp.next = None
+# loop ends
+return head
