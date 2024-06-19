@@ -1,0 +1,42 @@
+YOU SHOULD FIND THE TRIPLETS WHOSE SUM IS 3 ([-1,2,-1],[0,1,-1]) IN ARRAY [-1,0,1,2,-1,-4] -> USE ONLY SINGLE ELEMENTS DON'T USE NUMBERS MULTIPLE TIMES
+
+BRUTE : TRAVERSE EVERY ELEMENT AND SUM IT   for(i=0)  { for(j=i+1) {  for(k=j+1)   }  }  ---O(n^3)
+
+BETTER : arr[i] + arr[j] +arr[k] = 0 => 
+         arr[i] = -(arr[j] + arr[k])
+NOW USE "HASHING" SO CRFEATE A HASH TABLE FIND SUM OF 2 ELE(j,k) AND FIND 3RD ELE(i) BY HASH TABLE ---O(N^2 * logM)
+IN THIS WE AR4E SORTING IN LAST STEP AND SENDING THE SORTED TRIPLET TO SET(for no repetetion) 
+
+OPTIMAL : FIRST SORT 
+
+[-2 -2 -2 -1 -1 -1 0 0 0 2 2 2 2]    fix i , k and traverse j if sum<0 and k if sum>0after getting [-2,0,2] traverse j(front),k(back) they will collide so stop traversing
+  |        |                   |     traverse i to other number it should not be -2 
+  i        j                   k 
+
+GETTING RID OF DUPLICATES : arr[i] == arr[i-1] in for loop
+
+
+def triplet(n,arr):
+ans =[]
+arr.sort()
+for i in range(n): 
+if i!=0 and arr[i] == arr[i-1]:              # remove duplicates:
+continue
+
+j = i+1                                      # moving 2 pointers
+k = n-1
+while j < k
+sum = arr[i] + arr[j] +arr[k] 
+if sum < 0:
+j+=1
+elif sum > 0:
+k-= 1
+else:
+temp = [arr[i] + arr[j] +arr[k]]
+ans.append(temp)
+j+=1
+k-=1
+while j < k and arr[j] == arr[j - 1]:           # skip the duplicates:
+j += 1
+while j < k and arr[k] == arr[k + 1]:
+k -= 1
