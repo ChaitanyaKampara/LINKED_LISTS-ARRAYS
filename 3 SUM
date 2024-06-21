@@ -9,8 +9,8 @@ IN THIS WE AR4E SORTING IN LAST STEP AND SENDING THE SORTED TRIPLET TO SET(for n
 
 OPTIMAL : FIRST SORT 
 
-[-2 -2 -2 -1 -1 -1 0 0 0 2 2 2 2]    fix i , k and traverse j if sum<0 and k if sum>0after getting [-2,0,2] traverse j(front),k(back) they will collide so stop traversing
-  |        |                   |     traverse i to other number it should not be -2 
+[-2 -2 -2 -1 -1 -1 0 0 0 2 2 2 2]    fix i , k and traverse j if sum<0 and k if sum>0 after getting [-2,0,2] traverse j(front),k(back) they will collide                                      
+  |        |                   |     so stop traversing traverse i to other number it should not be -2 
   i        j                   k 
 
 GETTING RID OF DUPLICATES : arr[i] == arr[i-1] in for loop
@@ -20,10 +20,10 @@ def triplet(n,arr):
 ans =[]
 arr.sort()
 for i in range(n): 
-if i!=0 and arr[i] == arr[i-1]:              # remove duplicates:
+if i!=0 and arr[i] == arr[i-1]:              # remove duplicates: what we are doing means we going to last -2 ( actually there are three -2's).
 continue
 
-j = i+1                                      # moving 2 pointers
+j = i+1                                      # moving 2 pointers : above we already said i means last -2 . So j =i+1 means 1st -1 in array
 k = n-1
 while j < k
 sum = arr[i] + arr[j] +arr[k] 
