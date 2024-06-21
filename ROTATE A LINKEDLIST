@@ -20,22 +20,22 @@ def insertNode(head, val):
 def RotateLL(head,k):
 if head == None or head.next == None or k=0 :
 return head
-# calc length
+                                                                 # calc length
 temp = head
 length =1
-# loop starts
+                                                                 # loop starts
 while temp.next!=None:
 length+ = 1
 temp = temp.next
-#Link last node to first node
+                                                                 # Link last node to first node
 temp.next = head
 k = k % length
 end = length - k
 while end:
    temp = temp.next
    end-=1
-#breaking last node link and pointing to NULL
+                                                                  # breaking last node link and pointing to NULL
 head = temp.next
 temp.next = None
-# loop ends
+                                                                  # loop ends
 return head
